@@ -1,13 +1,12 @@
 Name:           pithos
-Version:        1.0.1
-Release:        2%{?dist}
+Version:        1.1.0
+Release:        1%{?dist}
 Summary:        A Pandora client for the GNOME Desktop
 
 Group:          Applications/File
 License:        GPLv3
 URL:            http://pithos.github.io/
 Source0:        https://github.com/pithos/pithos/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         pithos-pylast.patch
 
 BuildArch:      noarch
 BuildRequires:  python3-devel python3-setuptools desktop-file-utils
@@ -17,22 +16,16 @@ Requires:       python3-setuptools
 Requires:       gstreamer1-plugins-good
 Requires:       gstreamer1-plugins-ugly
 Requires:       gstreamer1-plugins-bad-freeworld
-Requires:       libnotify keybinder3 gtk3
-Requires:       python3-dbus
+Requires:       gtk3
 Requires:       python3-gobject
-Requires:       pylast
 Requires:       python3-pyxdg
 Requires:       hicolor-icon-theme
 
 %description
-Pithos is a Pandora client for the GNOME Desktop. The official Flash-based
-client is a CPU hog, and Pianobar is a great reverse-engineered implementation,
-but is command-line only. Neither integrate with the desktop very well, missing
-things like media key support and song notifications.
+Pithos is a Pandora client for the GNOME Desktop.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %install
 %{__python3} setup.py install --root=%{buildroot}
@@ -62,6 +55,10 @@ update-desktop-database &> /dev/null || :
 %{_datadir}/icons/hicolor/
 
 %changelog
+* Sun May 10 2015 Greg Sheremeta <greg@gregsheremeta.com> - 1.1.0-1
+- Bump version to 1.1.0.
+  Shortened description.
+
 * Mon Jan 5 2015 TingPing <tingping@tingping.se> - 1.0.1-2
 - Fix importing pylast
 
