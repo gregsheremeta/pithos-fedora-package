@@ -10,7 +10,6 @@ Source0:        https://github.com/pithos/pithos/archive/%{version}.tar.gz#/%{na
 
 BuildArch:      noarch
 BuildRequires:  python3-devel python3-setuptools desktop-file-utils
-BuildRequires:  python2-devel
 
 Requires:       python3-setuptools
 Requires:       gstreamer1-plugins-good
@@ -18,7 +17,6 @@ Requires:       gstreamer1-plugins-ugly
 Requires:       gstreamer1-plugins-bad-freeworld
 Requires:       gtk3
 Requires:       python3-gobject
-Requires:       python3-pyxdg
 Requires:       hicolor-icon-theme
 
 %description
@@ -32,10 +30,6 @@ Pithos is a Pandora client for the GNOME Desktop.
 
 # Remove Unity specific icons
 rm -rf %{buildroot}%{_datadir}/icons/ubuntu*
-
-# Terrible workaround for no python3 pylast package 
-# (it is the same file for py2 and py3 upstream)
-ln -s %{python_sitelib}/pylast.py %{buildroot}%{python3_sitelib}/%{name}/pylast.py
 
 %post
 gtk-update-icon-cache %{_datadir}/icons/hicolor &> /dev/null || :
@@ -55,6 +49,9 @@ update-desktop-database &> /dev/null || :
 %{_datadir}/icons/hicolor/
 
 %changelog
+* Mon May 18 2015 Greg Sheremeta <greg@gregsheremeta.com> - 1.1.1-1
+- Remove pylast stuff.
+
 * Mon May 18 2015 Greg Sheremeta <greg@gregsheremeta.com> - 1.1.1-1
 - Bump version to 1.1.1.
 
