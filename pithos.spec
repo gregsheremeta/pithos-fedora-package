@@ -1,5 +1,5 @@
 Name:           pithos
-Version:        1.0.2
+Version:        1.0.3
 Release:        1%{?dist}
 Summary:        A Pandora client for the GNOME Desktop
 
@@ -59,6 +59,9 @@ update-desktop-database &> /dev/null || :
 %{_datadir}/icons/hicolor/
 
 %changelog
+* Mon May 18 2015 Greg Sheremeta <greg@gregsheremeta.com> - 1.0.3-1
+- Bump version to 1.0.3.
+
 * Mon May 11 2015 Greg Sheremeta <greg@gregsheremeta.com> - 1.0.2-1
 - Bump version to 1.0.2. Shortened description.
 
